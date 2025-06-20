@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>CSRF Test via iframe</title>
+</head>
+<body>
+  <h1>Testing CSRF on Certinia</h1>
+
+  <!-- iframe مخفي -->
+  <iframe src="https://certinia.my.site.com/community/YourTargetPage" style="display:none;" id="targetFrame"></iframe>
+
+  <script>
+    // تسجيل وقت التحميل للتأكد من التنفيذ
+    window.onload = function() {
+      console.log("[+] iframe loaded. Waiting for internal JS to trigger request...");
+
+      // اختبار إذا حدث شيء بعد التأطير
+      setTimeout(() => {
+        console.log("[!] No auto POST request detected yet. Manual observation via DevTools (Network tab) may be required.");
+      }, 3000);
+    };
+  </script>
+</body>
+</html>
